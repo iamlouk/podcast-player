@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="css/style.css"/>
+	<link rel="stylesheet" href="assets/font-awesome-4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+	<div id="arrow"></div>
+	<header>
+		<span>
+			<i id="icon" class="fa fa-fw fa-2x fa-podcast" aria-hidden="true"></i>
+		</span>
+	</header>
+	<div id="main-container">
+		<div class="status">
+			<input type="text" value="" id="selected-podcast" placeholder="Kein Podcast ausgewählt" />
+			<input type="text" value="" id="selected-episode" placeholder="Keine Episode ausgewählt" readonly="readonly" />
+		</div>
+		<div class="list">
+			<ul>
+
+			</ul>
+		</div>
+		<div class="player">
+			<div class="buttons">
+				<button class="playpause"><i class="fa fa-play" aria-hidden="true"></i></button>
+				<button class="speed">1.0x</button>
+				<button class="mute"><i class="fa fa-volume-up" aria-hidden="true"></i></button>
+			</div>
+			<div class="main">
+				<span class="current-time">00:00:00</span>
+				<span class="pcast-progress"><span class="progress-bar"></span></span>
+			</div>
+			<audio src=""></audio>
+		</div>
+	</div>
+	<footer>
+	</footer>
+	<script type="text/javascript">
+
+	let { remote, ipcRenderer } = require('electron');
+	let fs = require('fs'),
+		path = require('path'),
+		browserWindow = remote.getCurrentWindow(),
+		configDirectory = path.join(process.env.HOME, '.dione/config'),
+		$ = (selector, node = document) => node.querySelector(selector),
+		$$ = (selector, node = document) => node.querySelectorAll(selector);
+
+	let ui = require('./js/ui.js'),
+		player = require('./js/player.js').init(),
+		podcastapi = require('./js/pdcapi.js'),
+		podcastSeachGui = require('./js/podcast-search-gui.js').init(),
+		abos = require('./js/abos.js').init();
+
+	</script>
+</body>
+</html>
