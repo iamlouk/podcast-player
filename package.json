@@ -16,6 +16,11 @@
 		"electron-packager": "^8.0.0"
 	},
 	"dependencies": {
-		"electron-positioner": "^3.0.0"
+		"electron-positioner": "^3.0.0",
+		"font-awesome": "^4.7.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iamlouk/podcast-player.git"
 	}
 }

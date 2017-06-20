@@ -40,6 +40,7 @@ module.exports = {
 		if (tray == null) {
 			tray = new Tray(getStatusBarIcon());
 			tray.on('click', (event, trayBounds) => showWindow(trayBounds));
+			this.hidden = false;
 		}
 	},
 
@@ -47,6 +48,7 @@ module.exports = {
 		if (tray) {
 			tray.destroy();
 			tray = null;
+			this.hidden = true;
 		}
 
 		if (window) {
