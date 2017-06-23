@@ -1,16 +1,21 @@
-let $ = (sel: String, node = document) => node.querySelector(sel);
-let $$ = (sel: String, node = document) => node.querySelectorAll(sel);
 
+import ui from './ui';
+import player from './player';
+import podcastapi from './pdcapi';
 
-let ui = require('./ui');
-let player = require('./player');
-let podcastapi = require('./pdcapi');
+interface Episode {
+	link: string;
+	url: string,
+	title: string,
+	author: string,
+	human_date: string
+};
 
-module.exports = ({
+export default ({
 
-  $selectedPodcast: $('#selected-podcast'),
-  $selectedEpisode: $('#selected-episode'),
-  $ul: $('.list ul'),
+  $selectedPodcast: document.querySelector('#selected-podcast'),
+  $selectedEpisode: document.querySelector('#selected-episode'),
+  $ul: document.querySelector('.list ul'),
 
   init: function(){
 
@@ -40,14 +45,14 @@ module.exports = ({
             let onClick = (event) => {
               let target = event.target.tagName.toLowerCase() == 'li' ? event.target : event.target.parentNode;
               let feedUrl = target.dataset['feedurl'];
-              let podcastName = $('.collectionName', target).innerHTML;
+              let podcastName = target.querySelector('.collectionName').innerHTML;
               this.$selectedPodcast.value = podcastName;
 
               // console.log('Podcast ausgewählt: ', target, feedUrl);
               this.showEpisodes(feedUrl);
             };
 
-            let items = $$('li', this.$ul);
+            let items = this.$ul.querySelectorAll('li');
             for (let i = 0; i<items.length; i++)
               items[i].onclick = onClick;
 
@@ -63,7 +68,7 @@ module.exports = ({
 
   showEpisodes: function(feedUrl){
     ui.spinner.start();
-    podcastapi.getEpisodes(feedUrl).then((episodes) => {
+    podcastapi.getEpisodes(feedUrl).then((episodes: Array<Episode>) => {
 
       this.$ul.innerHTML = '';
       episodes.forEach((episode, index) => {
@@ -82,7 +87,7 @@ module.exports = ({
       setTimeout(() => {
         let onClick = (event) => {
           let target = event.target.tagName.toLowerCase() == 'li' ? event.target : event.target.parentNode;
-          let episodeName = $('.collectionName', target).innerHTML;
+          let episodeName = target.querySelector('.collectionName').innerHTML;
           this.$selectedEpisode.value = episodeName;
           target.classList.add('selected');
           // console.log('Episode: ', episodeName);
@@ -93,7 +98,7 @@ module.exports = ({
           });
         };
 
-        let items = $$('li', this.$ul);
+        let items = this.$ul.querySelectorAll('li');
         for (let i = 0; i<items.length; i++)
           items[i].onclick = onClick;
 

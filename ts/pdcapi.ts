@@ -2,7 +2,7 @@
 const qs = require('querystring');
 const rssparser = require('parse-rss');
 
-module.exports = ({
+export default ({
 
     APIURL: 'https://itunes.apple.com/search?',
 

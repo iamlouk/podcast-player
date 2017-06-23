@@ -16,6 +16,7 @@
 		"electron-packager": "^8.0.0"
 	},
 	"dependencies": {
+		"@types/node": "^8.0.1",
 		"electron-positioner": "^3.0.0",
 		"font-awesome": "^4.7.0"
 	},

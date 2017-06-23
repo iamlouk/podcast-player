@@ -1,5 +1,5 @@
 
-module.exports = ({
+export default ({
 
   spinner: {
     $icon: document.querySelector('header #icon'),
