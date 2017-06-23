@@ -1,9 +1,8 @@
-let $ = (selector, node = document) => node.querySelector(selector);
 
 module.exports = ({
 
   spinner: {
-    $icon: $('header #icon'),
+    $icon: document.querySelector('header #icon'),
     isSpinning: false,
 
     start: function(){

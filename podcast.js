@@ -53,6 +53,7 @@ module.exports = {
 
 		if (window) {
 			window.close();
+			window = null;
 		}
 	}
 

@@ -16,7 +16,6 @@ module.exports = ({
         return this.request({
             'term':term
         }).then(data => {
-            console.log(data);
             let res = [];
             if (data.resultCount < 1) return [];
 

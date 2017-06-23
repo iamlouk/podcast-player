@@ -39,21 +39,7 @@
 	<footer>
 	</footer>
 	<script type="text/javascript">
-
-	let { remote, ipcRenderer } = require('electron');
-	let fs = require('fs'),
-		path = require('path'),
-		browserWindow = remote.getCurrentWindow(),
-		configDirectory = path.join(process.env.HOME, '.dione/config'),
-		$ = (selector, node = document) => node.querySelector(selector),
-		$$ = (selector, node = document) => node.querySelectorAll(selector);
-
-	let ui = require('./js/ui.js'),
-		player = require('./js/player.js').init(),
-		podcastapi = require('./js/pdcapi.js'),
-		podcastSeachGui = require('./js/podcast-search-gui.js').init(),
-		abos = require('./js/abos.js').init();
-
+		require(__dirname + '/js/index.js');
 	</script>
 </body>
 </html>
