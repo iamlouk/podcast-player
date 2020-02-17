@@ -7,7 +7,6 @@
 	<link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css">
 </head>
 <body>
-	<div id="arrow"></div>
 	<header>
 		<span>
 			<i id="icon" class="fa fa-fw fa-2x fa-podcast" aria-hidden="true"></i>
@@ -36,10 +35,13 @@
 			<audio src=""></audio>
 		</div>
 	</div>
-	<footer>
-	</footer>
+	<footer></footer>
 	<script type="text/javascript">
-		require(__dirname + '/js/index.js');
+		require(`${__dirname}/js/index.js`);
+
+        // const electron = require('electron');
+        // electron.remote.getCurrentWindow().webContents.openDevTools();
+
 	</script>
 </body>
 </html>

@@ -1,24 +1,28 @@
 {
 	"name": "podcast-player",
-	"productName": "Podcasts",
-	"version": "0.0.1",
+	"productName": "PodPly",
+	"version": "0.0.2",
 	"description": "simple electron-based podcast player",
 	"main": "main.js",
 	"scripts": {
 		"start": "electron .",
-		"build": "bash ./build.sh",
-		"package": "electron-packager ./build/ Podcasts --platform=darwin --overwrite"
+		"start:dev": "electron . --dev",
+		"build:css": "if [ ! -d ./css ]; then mkdir css; fi; sass --scss scss/style.scss css/style.css",
+		"build:js": "find ./ts/ -name \"*.ts\" -type f > ts-files.txt; tsc @ts-files.txt --outDir ./js --module commonjs --target ES2017; rm ts-files.txt",
+		"build": "npm run build:css && npm run build:js",
+		"package": "electron-packager ./ PodPly --overwrite --out=builds --icon=assets/podcast-512x512.png",
+		"clean": "rm -rf css .sass-cache js builds"
 	},
 	"author": "Lou Knauer <lou.knauer98@gmail.com>",
 	"license": "MIT",
 	"devDependencies": {
-		"electron": "^1.4.0",
-		"electron-packager": "^8.0.0"
+		"@types/node": "^8.10.59",
+		"electron": "^1.8.8",
+		"electron-packager": "^8.7.2"
 	},
 	"dependencies": {
-		"@types/node": "^8.0.1",
-		"electron-positioner": "^3.0.0",
-		"font-awesome": "^4.7.0"
+		"font-awesome": "^4.7.0",
+		"parse-rss": "^1.0.3"
 	},
 	"repository": {
 		"type": "git",

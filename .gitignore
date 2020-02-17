@@ -2,4 +2,6 @@ node_modules
 css
 js
 .sass-cache
+builds
+ts-files.txt
 
