@@ -18,7 +18,7 @@
 	"devDependencies": {
 		"@types/node": "^8.10.59",
 		"electron": "^11.5.0",
-		"electron-packager": "^8.7.2"
+		"electron-packager": "^16.0.0"
 	},
 	"dependencies": {
 		"font-awesome": "^4.7.0",
